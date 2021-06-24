@@ -173,3 +173,47 @@ void RootDirectory::file_delete(std::string filename)
 		found = true;  // value reset
 	}
 }
+
+void RootDirectory::update(std::string filename, byte block_size, byte start_block)
+{
+	using std::string;
+
+	char name_compare[6];  // 匹配文件名
+	strcpy_s(name_compare, filename.c_str());
+
+	entry cur_entry;  // 64位二进制记录当前表项
+	bool found = 1;  // 是否匹配到目标目录项
+	byte block_num;  // 初始块号
+	char name_part;
+
+	// 寻找文件 并重置目录项
+	for (index = 0; index < DIRECTORY_ENTRY_NUM; index++) {  // 访问目录项
+		cur_entry = m_start_addr[index];
+		block_num = cur_entry % (1 << 8);
+
+		if (block_num) {  // 非指向块0，即非空 存在文件
+			cur_entry = cur_entry >> 16;  // 当前表项的文件名
+
+			// 文件名比较
+			for (size_t i = 0; i < NAME_MAX; i++) {  // 低位先输出，作为左端
+				name_part = cur_entry % (1 << 8);
+				// 信息比较
+				if (name_part != name_compare[i]) {  // 信息不相符
+					found = false;
+					break;
+				}
+				cur_entry = cur_entry >> 8;
+			}
+
+			// 当前目录项匹配成功，更新目录项信息
+			if (found) {
+				byte* tmp = (byte*)(m_start_addr + index);
+				*tmp = start_block;
+				*(tmp + 1) = block_size;
+				return;
+			}
+
+		}
+		found = true;  // value reset
+	}
+}

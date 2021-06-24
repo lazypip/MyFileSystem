@@ -193,6 +193,9 @@ void FileSystem::write()
 		// 修改当前文件的cur值
 		cur_start_block = block_number[0];
 		cur_block_size = block_count;
+
+		// 修改目录项的初始块与块数信息       **注意**
+		m_rootdirectory->update(cur_filename, cur_block_size, cur_start_block);
 		return;
 	}
 
@@ -272,6 +275,8 @@ void FileSystem::user_opera()
 	string filename;
 	bool quit = 1;  // 控制退出
 
+	cout << "Command List : " << "ls, open, close, read, write, delete, quit" << endl;
+
 	while (quit) {
 		// 输入指令
 		cout << ">> ";
@@ -282,7 +287,7 @@ void FileSystem::user_opera()
 				break;
 			}
 		}
-		
+
 		// 选择执行指令
 		switch (command_num)
 		{

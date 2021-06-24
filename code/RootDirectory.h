@@ -29,6 +29,7 @@ public:
 	void filename_show();  // ls
 	bool file_open(std::string filename, byte* para);  // para[0] 起始块号 para[1] 块数  打开文件
 	void file_delete(std::string filename);  // 删除文件目录信息
+	void update(std::string filename, byte block_size, byte start_block);  // 更新文件信息   **注意**
 
 };
 
