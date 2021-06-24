@@ -1,10 +1,8 @@
 // MBR区域共占用 16 byte 即 1 个 block
 // MBR从地址空间的 0 地址开始， 即 0 - 15 byte
-
 #pragma once
 #ifndef MBR_
 #define MBR_
-
 
 class MBR {
 private:
@@ -13,11 +11,6 @@ private:
 public:
 	MBR(void* in_m_addr = nullptr);
 	~MBR();
-
-	void test();
-	// function offered
-	// void info_show();
-
 };
 
 #endif // !MBR

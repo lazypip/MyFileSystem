@@ -1,12 +1,10 @@
 // 模拟磁盘 2560 byte
 // 块大小 16 byte 共 160 个块
-
 #pragma once
 #ifndef FILESYSTEM
 #define FILESYSTEM
 #define DISK_MAXLEN 2560
 #define BLOCK_SIZE 16
-
 #define MBRSIZE 16
 #define FATSIZE 160
 #define DIRECTORY_SIZE 256
@@ -49,7 +47,6 @@ public:
 	FileSystem();
 	~FileSystem();
 
-	void test();
 	void user_opera();
 };
 

@@ -4,7 +4,6 @@
 // 6 byte name + 1byte 占用块个数 + 1byte 初始block块号 （低地址）
 // 若没有此项，块号为0
 // 文件名不能为空，最长为5个字符，最后存储\0
-
 #pragma once
 #ifndef ROOTDIRECTORY
 #define ROOTDIRECTORY
@@ -27,10 +26,6 @@ public:
 	~RootDirectory();
 
 	// function offered
-	void test();
-
-	//void file_read();
-	//void file_delete();
 	void filename_show();  // ls
 	bool file_open(std::string filename, byte* para);  // para[0] 起始块号 para[1] 块数  打开文件
 	void file_delete(std::string filename);  // 删除文件目录信息

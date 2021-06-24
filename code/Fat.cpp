@@ -71,27 +71,3 @@ void FAT::file_delete(byte start_block, byte block_size, byte* para)
 	}
 
 }
-
-
-
-void FAT::test()
-{
-	using std::cout;
-	using std::endl;
-
-	/*for (size_t i = 0; i < FATSIZE; i++) {
-		cout << (int)m_start_addr[i] << endl;
-	}
-
-	for (size_t i = 0; i < FATSIZE; i++) {
-		m_start_addr[i] = 2;
-	}
-
-	for (size_t i = 0; i < FATSIZE; i++) {
-		cout << (int)m_start_addr[i] << endl;
-	}*/
-
-	cout << "FAT初始地址为: " << (int*)m_start_addr << endl
-		<< "结束地址为: " << (int*)m_end_addr << endl
-		<< "共有 " << FATSIZE << "项，每项占 " << 1 << "byte" << endl;
-}

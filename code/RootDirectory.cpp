@@ -19,16 +19,6 @@ RootDirectory::~RootDirectory()
 
 }
 
-void RootDirectory::test()
-{
-	using std::cout;
-	using std::endl;
-
-	cout << "根目录初始地址为: " << m_start_addr << endl
-		<< "结束地址为: " << m_end_addr << endl
-		<< "共有 " << DIRECTORY_ENTRY_NUM << "项，每项占 " << ENTRY_SIZE << "byte" << endl;
-}
-
 void RootDirectory::filename_show()
 {
 	using std::cout;

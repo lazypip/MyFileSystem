@@ -13,8 +13,6 @@ MBR::MBR(void* in_m_addr)
 	// message record
 	//
 	//
-
-
 }
 
 MBR::~MBR()
@@ -22,11 +20,3 @@ MBR::~MBR()
 
 }
 
-void MBR::test()
-{
-	using std::cout;
-	using std::endl;
-	cout << "mbr初始地址为: " << m_addr << endl
-		<< "结束地址为: "  << endl
-		<< "共有 " << 1 << "项，每项占 " << MBRSIZE << "byte" << endl;
-}

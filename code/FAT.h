@@ -4,7 +4,6 @@
 // 注意：将char 转化为 unsigned char 进行赋值
 // 文件数据从 第28个块开始索引，index值为27，从0开始计数
 // 块不存在有效数据时，使用 0 表示，1代表是文件使用的最后一块
-
 #pragma once
 #ifndef FAT_
 #define FAT_
@@ -21,12 +20,9 @@ public:
 	FAT(void* in_m_start_addr = nullptr);
 	~FAT();
 
-	void test();
-
 	// function
 	void file_read(byte start_block, byte block_size, byte* para);  // 返回块号至para
 	bool empty_block(int block_count, byte* block_number);  // 找到block_count个空闲块（0）并修改值
 	void file_delete(byte start_block, byte block_size, byte* para);  // 块号置零
 };
-
 #endif // !FAT_
